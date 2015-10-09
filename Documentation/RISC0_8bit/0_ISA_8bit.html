@@ -112,6 +112,18 @@
 				background-color:#FFF;
 			}
 		}
+		span.tab80{
+   		padding: 0 80px; /* Or desired space*/
+		}
+		span.tab10{
+   		padding: 0 10px; /* Or desired space*/
+		}
+		span.tab5{
+   		padding: 0 5px; /* Or desired space*/
+		}
+		span.tab30{
+   		padding: 0 30px; /* Or desired space*/
+		}
 	</style>
 </head>
 <body>
@@ -146,7 +158,7 @@ Operazioni della ALU in ordine di codifica (A = 000, A OR B = 111)<br>
 <h3>istruzioni della ALU</h3>
 <p>
 <strong>op.Code	istr.</strong><br>
-0000	<strong>INC</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>&lt;register&gt;+1 →	D</em><br>
+0000<span class="tab5"></span><strong>INC</strong><span class="tab10"></span>register<span class="tab30"></span>descr:	<em>&lt;register&gt;+1 →	D</em><br>
 <div style='padding-left: 90pt'>
 Za: 1 JZ: 0 ALU: 011 SH: 00 A: 000 C:100000 M: 000<br>
 0100 1100 0001 0000 0000 ⇒ 4c100<br>
@@ -154,7 +166,7 @@ Za: 1 JZ: 0 ALU: 011 SH: 00 A: 000 C:100000 M: 000<br>
 </p>
 			
 <p>
-0001	<strong>NOT</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>!&lt;register&gt; → D</em><br>
+0001<span class="tab5"></span><strong>NOT</strong><span class="tab10"></span>register<span class="tab30"></span>descr:	<em>!&lt;register&gt; → D</em><br>
 <div style='padding-left: 90pt'>
 Za: 1 JZ: 0 ALU: 010 SH: 00 A: 000 C:100000 M: 000<br>
 0100 1000 0001 0000 0000 ⇒ 48100<br>
@@ -162,7 +174,7 @@ Za: 1 JZ: 0 ALU: 010 SH: 00 A: 000 C:100000 M: 000<br>
 </p>
 
 <p>
-0010	<strong>ADD</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>D+&lt;register&gt; → D</em><br>
+0010<span class="tab5"></span><strong>ADD</strong><span class="tab10"></span>register<span class="tab30"></span>descr:	<em>D+&lt;register&gt; → D</em><br>
 <div style='padding-left: 90pt'>
 Za: 1 JZ: 0 ALU: 100 SH: 00 A: 100 C:100000 M:000<br>
 0101 0000 1001 0000 0000 ⇒ 50900<br>
@@ -170,7 +182,7 @@ Za: 1 JZ: 0 ALU: 100 SH: 00 A: 100 C:100000 M:000<br>
 </p>
 
 <p>
-0011	<strong>SUB</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>D - &lt;register&gt; → D</em><br>
+0011<span class="tab5"></span><strong>SUB</strong><span class="tab10"></span>register<span class="tab30"></span>descr:	<em>D - &lt;register&gt; → D</em><br>
 <div style='padding-left: 90pt'>
 Za: 1 JZ: 0 ALU: 101 SH: 00 A: 100 C:100000 M:000<br>
 0101 0100 1001 0000 0000 ⇒ 54900<br>
@@ -178,7 +190,7 @@ Za: 1 JZ: 0 ALU: 101 SH: 00 A: 100 C:100000 M:000<br>
 </p>
 
 <p>
-0100	<strong>AND</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>D AND &lt;register&gt; → D</em><br>
+0100<span class="tab5"></span><strong>AND</strong><span class="tab10"></span>register<span class="tab30"></span>descr:	<em>D AND &lt;register&gt; → D</em><br>
 <div style='padding-left: 90pt'>
 Za: 1 JZ: 0 ALU: 110 SH: 00 A: 100 C:100000 M:000<br>
 0101 1000 1001 0000 0000 ⇒ 58900<br>
@@ -186,7 +198,7 @@ Za: 1 JZ: 0 ALU: 110 SH: 00 A: 100 C:100000 M:000<br>
 </p>
 			
 <p>
-0101	<strong>OR</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>D OR &lt;register&gt; → D</em><br>
+0101<span class="tab5"></span><strong>OR</strong><span class="tab10"></span>register<span class="tab30"></span>descr:	<em>D OR &lt;register&gt; → D</em><br>
 <div style='padding-left: 90pt'>
 Za: 1 JZ: 0 ALU: 111 SH: 00 A: 100 C:100000 M:000<br>
 0101 1100 1001 0000 0000 ⇒ 5c900<br>
@@ -194,7 +206,7 @@ Za: 1 JZ: 0 ALU: 111 SH: 00 A: 100 C:100000 M:000<br>
 </p>
 
 <p>
-0110	<strong>DEST</strong>&nbsp;&nbsp;&nbsp;&nbsp;costante&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr: <em>costante → Dest</em><br>
+0110<span class="tab5"></span><strong>DEST</strong><span class="tab10"></span>costante<span class="tab30"></span>descr: <em>costante → Dest</em><br>
 <div style='padding-left: 90pt'>
 Za: 1 JZ: 0 ALU: 000 SH: 00 A: 011 C:100000 M:000<br>
 0100 0000 0111 0000 0000 ⇒ 40700<br>
@@ -202,7 +214,7 @@ Za: 1 JZ: 0 ALU: 000 SH: 00 A: 011 C:100000 M:000<br>
 </p>
 
 <p>
-0111	<strong>MOVD</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>&lt;register&gt;(B) → D</em><br>
+0111<span class="tab5"></span><strong>MOVD</strong><span class="tab10"></span>register<span class="tab30"></span>descr:	<em>&lt;register&gt;(B) → D</em><br>
 <div style='padding-left: 90pt'>
 Za: 1 JZ: 0 ALU: 001 SH: 00 A: 000 C:100000 M:000<br>
 </div>
@@ -214,7 +226,7 @@ Za: 1 JZ: 0 ALU: 001 SH: 00 A: 000 C:100000 M:000<br>
 
 <h3>shift</h3>
 <p>
-1000	<strong>SHR</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>&lt;register&gt; / 2 → D</em><br>
+1000<span class="tab5"></span><strong>SHR</strong><span class="tab10"></span>register<span class="tab30"></span>descr:	<em>&lt;register&gt; / 2 → D</em><br>
 <div style='padding-left: 90pt'>
 Za: 1 JZ: 0 ALU: 001 SH: 11 A:000 C:100000 M:000<br>
 </div>
@@ -224,7 +236,7 @@ Za: 1 JZ: 0 ALU: 001 SH: 11 A:000 C:100000 M:000<br>
 </p>
 	
 <p>
-1001	<strong>SHL</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>&lt;register&gt; * 2 → D</em><br>
+1001<span class="tab5"></span><strong>SHL</strong><span class="tab10"></span>register<span class="tab30"></span>descr:	<em>&lt;register&gt; * 2 → D</em><br>
 <div style='padding-left: 90pt'>
 Za: 1 JZ: 0 ALU:001 SH: 01 A:000 C:100000 M:000<br>
 0100 0101 0001 0000 0000 ⇒ 45100<br>
@@ -234,19 +246,23 @@ Za: 1 JZ: 0 ALU:001 SH: 01 A:000 C:100000 M:000<br>
 
 <h3>registrazione</h3>
 <p>
-1011	<strong>MOV</strong>&nbsp;&nbsp;&nbsp;&nbsp;register(Δ),register(B)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>dest ← source</em><br>
+1011<span class="tab5"></span><strong>MOV</strong><span class="tab10"></span>register(Δ),register(B)<span class="tab30"></span>descr:	<em>dest ← source</em><br>
 <div style='padding-left: 90pt'>
 Za: 0 JZ: 0 ALU:001 SH: 00 A:000  B:     C:000000 M:000<br>
 0000 0100 0000 0000 0000 ⇒ 04000<br>
-<em>mappa sorgente </em>(B)<em>: 			000=MDR; 001=PC; 010=GENERAL; 011=H; 100=D</em><br>
+</div>
+<p>
+<div style='padding-left: 60pt'>
+<em>mappa sorgente </em>(B)<em>: 			000=MDR; 001=PC; 010=GENERAL; 011=H; 100=D</em><br><br>
 <em>mappa destinazione </em>(Δ)<em>:		000=MAR; 001=MDR; 010=PC; 011=GENERAL; 100=H</em><br>
+</p>
 </div>
 </p>
 
 
 <h3>misc</h3>
 <p>
-1010	<strong>NOP</strong>&nbsp;&nbsp;&nbsp;&nbsp;register	(B) <br>
+1010<span class="tab5"></span><strong>NOP</strong><span class="tab10"></span>register	(B) <br>
 <div style='padding-left: 90pt'>
 Za: 0 JZ: 0 ALU:	SH: 00 A:<br>
 </div>
@@ -255,7 +271,7 @@ Za: 0 JZ: 0 ALU:	SH: 00 A:<br>
 
 <h3>memory</h3>
 <p>
-1100	<strong>STOR</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>MAR ↑ MDR </em><br>
+1100<span class="tab5"></span><strong>STOR</strong><span class="tab80"></span>descr:	<em>MAR ↑ MDR </em><br>
 <div style='padding-left: 90pt'>
 Za: 0 JZ:  0 ALU: 000 SH: 00 A: 000 B:     C: 000000 M: 010<br>
 0000 0000 0000 0000 0010 ⇒ 00002<br>
@@ -269,7 +285,7 @@ Deve essere anticipata da una <strong>MOV 00000BBB </strong>(MOV MAR SOURCE) ha 
 </p>
 
 <p>
-1101	<strong>LOAD</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>MAR ↓ MDR</em><br>
+1101<span class="tab5"></span><strong>LOAD</strong><span class="tab80"></span>descr:	<em>MAR ↓ MDR</em><br>
 <div style='padding-left: 90pt'>
 Za: 0 JZ: 0 ALU: 000 SH: 00 A: 000 B:     C: 000000 M: 100<br>
 0000 0000 0000 0000 0100 ⇒ 0004<br>
@@ -285,7 +301,7 @@ Deve essere anticipata da una <strong>MOV 00000BBB </strong>ha lo scopo di abili
 
 <h3>condizionali</h3>
 <p>
-1111	<strong>JMP</strong>&nbsp;&nbsp;&nbsp;&nbsp;displacement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>PC + H → PC</em><br>
+1111<span class="tab5"></span><strong>JMP</strong><span class="tab10"></span>displacement<span class="tab30"></span>descr:	<em>PC + H → PC</em><br>
 <div style='padding-left: 90pt'>
 Za: 0 JZ: 0 ALU: 100 SH: 00 A: 001 B:   C: 000100 M: 000<br>
 0001 0000 0010 0010 0000 ⇒ 10220<br>
@@ -294,12 +310,12 @@ Za: 0 JZ: 0 ALU: 100 SH: 00 A: 001 B:   C: 000100 M: 000<br>
 			
 <p>
 <div style='padding-left: 90pt'>
-Lo spiazzamento deve essere esplicito<br>
+<em>Lo spiazzamento deve essere esplicito</em><br>
 </div>
 </p>
 			
 <p>
-1110	<strong>JZ</strong>&nbsp;&nbsp;&nbsp;&nbsp;displacement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	descr:	<em>PC + H → PC</em><br>
+1110<span class="tab5"></span><strong>JZ</strong><span class="tab10"></span>displacement<span class="tab30"></span>	descr:	<em>PC + H → PC</em><br>
 <div style='padding-left: 90pt'>
 Za: 0 JZ: 1 ALU: 100 SH: 00 A: 001 B:    C: 000100 M: 000<br>
 0011 0000 0010 0010 0000 ⇒ 30220<br>
@@ -308,7 +324,7 @@ Za: 0 JZ: 1 ALU: 100 SH: 00 A: 001 B:    C: 000100 M: 000<br>
 			
 <p>
 <div style='padding-left: 90pt'>
-Lo spiazzamento deve essere esplicito<br>
+<i>Lo spiazzamento deve essere esplicito</i><br>
 </div>
 </p>
 

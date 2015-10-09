@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title></title>
+	<meta name="generator" content="Zim 0.60">
+	<meta name="viewport" content="width=device-width">
+	<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,greek,latin-ext' rel='stylesheet' type='text/css'> -->
+	<![if !IE]>
+	<!-- comment out for IE since it spams the user with warnings -->
+	<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+	<script type='text/javascript'>
+		$(window).load(function(){$("#navigation").height( $("#content").height()+65 );});
+	</script>
+	<![endif]>
+	<style>
+		body, html {
+			height:100%;
+			font-family:'Open Sans', sans-serif;
+			line-height:1.5em;
+			font-weight:300;
+			background-color:#FAFAFA;
+			text-rendering:geometricPrecision;
+			margin:0;
+			padding:0;
+		}
+		.wrapper {
+			height:100%;
+			position:relative;
+		}
+		#navigation {
+			background-color:#F3F3F3;
+			display:inline-block;
+			border-right:1px solid #EAEAEA;
+			padding-right:65px;
+			padding-top:65px;
+			padding-left:25px;
+			position:relative;
+			float:left;
+			min-height:100%;
+		}
+		#content {
+			float:left;
+			display:inline-block;
+			position:absolute;
+			max-width:960px;
+			padding:65px;
+		}
+		#navigation ul {
+			margin-top:0;
+			margin-bottom:0;
+			padding-left:40px;
+		}
+		#navigation li {
+			list-style-type:none;
+		}
+		#navigation a {
+			text-decoration:none;
+			color:gray;
+		}
+		#navigation strong {
+			color:#4E9A06;
+			font-weight:400;
+		}
+		#navigation a:hover {
+			text-decoration:underline;
+		}
+		#content h1:nth-child(1) {
+			margin-top:0;
+		}
+		h1,h2,h3,h4,h5,h6 {
+			color:#4E9A06;
+			font-weight:300;
+		}
+		#content a {
+			color:#CE5C00;
+		}
+		#content a {
+			text-decoration: none;
+		}
+		#content a:hover {
+			text-decoration: underline;
+		}
+		#content a:active {
+			text-decoration: underline;
+		}
+		#content strike {
+			color: grey;
+		}
+		#content u {
+			text-decoration: none;
+			background-color: yellow;
+		}
+		#content tt {
+			color: #2e3436;
+		}
+		#content pre {
+			color: #2e3436;
+			margin-left: 20px;
+		}
+		.backlinks {
+			color:gray;
+		}
+		hr.footnotes {
+			width: 20%;
+			margin-left: 0;
+		}
+		@media print{
+			#navigation{
+				background-color:#FFF;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div id="navigation"> <ul>
+<li><a href="./RISC0_8bit.html" title="RISC0 8bit" class="page">RISC0 8bit</a></li>
+<li><strong class="activepage">strumenti</strong></li>
+<li><a href="./LICENSE.html" title="License & Ref" class="page">License & Ref</a></li>
+</ul>
+ </div>
+		<div id="content">
+						<h1>strumenti</h1>
+<br>
+			<h4>Per aumentare il numero dei registri</h4>
+<p>
+<ul>
+<li style="list-style-image: url(./_resources/unchecked-box.png)">aumentare le linee C</li>
+<li style="list-style-image: url(./_resources/unchecked-box.png)">aumentare la capacità dello switch A/C</li>
+<li style="list-style-image: url(./_resources/unchecked-box.png)">aumentare le linee uscenti dai decoder A, B</li>
+<li style="list-style-image: url(./_resources/unchecked-box.png)">aumentare se necessario le capacità degli swA e swB </li>
+<li style="list-style-image: url(./_resources/unchecked-box.png)">aumentare le linee A</li>
+<li style="list-style-image: url(./_resources/unchecked-box.png)">correggere la codifica delle istruzioni</li>
+</ul>
+</p>
+<br>
+<h4>PCadder</h4>
+<p>
+Il componente è stato implementato con 2 input a 8bit, prevedendo di sommare +1 o +salto in base al bit <em>Cin</em>, ma questa funzione non è stata utilizzata, potrebbe forse semplificare la rete alle porte del PC<br>
+</p>
+<br>
+<h4>Riformulare LOAD e STOR</h4>
+<p>
+in modo da non dover essere precedute da tutte quelle <strong>MOV</strong><br>
+</p>
+<br>
+<h4>PSW</h4>
+<p>
+Un registro di stato permette di guardare oltre questo stato di implementazione, i risultati dell'ALU, <em>CarryOut</em> e <em>Z</em>, ne farebbero sicuramente parte parallelamente a un gestore degli interrupt<br>
+</p>
+
+
+			<br>
+			<hr class='footnotes'>
+			<span class="backlinks">
+				Backlinks:
+				
+			</span>
+		</div>
+	</div>
+</body>
+</html>
+

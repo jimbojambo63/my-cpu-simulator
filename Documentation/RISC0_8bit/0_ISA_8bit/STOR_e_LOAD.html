@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title></title>
+	<meta name="generator" content="Zim 0.60">
+	<meta name="viewport" content="width=device-width">
+	<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,greek,latin-ext' rel='stylesheet' type='text/css'> -->
+	<![if !IE]>
+	<!-- comment out for IE since it spams the user with warnings -->
+	<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+	<script type='text/javascript'>
+		$(window).load(function(){$("#navigation").height( $("#content").height()+65 );});
+	</script>
+	<![endif]>
+	<style>
+		body, html {
+			height:100%;
+			font-family:'Open Sans', sans-serif;
+			line-height:1.5em;
+			font-weight:300;
+			background-color:#FAFAFA;
+			text-rendering:geometricPrecision;
+			margin:0;
+			padding:0;
+		}
+		.wrapper {
+			height:100%;
+			position:relative;
+		}
+		#navigation {
+			background-color:#F3F3F3;
+			display:inline-block;
+			border-right:1px solid #EAEAEA;
+			padding-right:65px;
+			padding-top:65px;
+			padding-left:25px;
+			position:relative;
+			float:left;
+			min-height:100%;
+		}
+		#content {
+			float:left;
+			display:inline-block;
+			position:absolute;
+			max-width:960px;
+			padding:65px;
+		}
+		#navigation ul {
+			margin-top:0;
+			margin-bottom:0;
+			padding-left:40px;
+		}
+		#navigation li {
+			list-style-type:none;
+		}
+		#navigation a {
+			text-decoration:none;
+			color:gray;
+		}
+		#navigation strong {
+			color:#4E9A06;
+			font-weight:400;
+		}
+		#navigation a:hover {
+			text-decoration:underline;
+		}
+		#content h1:nth-child(1) {
+			margin-top:0;
+		}
+		h1,h2,h3,h4,h5,h6 {
+			color:#4E9A06;
+			font-weight:300;
+		}
+		#content a {
+			color:#CE5C00;
+		}
+		#content a {
+			text-decoration: none;
+		}
+		#content a:hover {
+			text-decoration: underline;
+		}
+		#content a:active {
+			text-decoration: underline;
+		}
+		#content strike {
+			color: grey;
+		}
+		#content u {
+			text-decoration: none;
+			background-color: yellow;
+		}
+		#content tt {
+			color: #2e3436;
+		}
+		#content pre {
+			color: #2e3436;
+			margin-left: 20px;
+		}
+		.backlinks {
+			color:gray;
+		}
+		hr.footnotes {
+			width: 20%;
+			margin-left: 0;
+		}
+		@media print{
+			#navigation{
+				background-color:#FFF;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div id="navigation"> <ul>
+<li><a href="../../RISC0_8bit.html" title="RISC0 8bit" class="page">RISC0 8bit</a></li>
+<ul>
+<li><a href="../0_ISA_8bit.html" title="0 ISA 8bit" class="page">0 ISA 8bit</a></li>
+<ul>
+<li><a href="./fetch%26load.html" title="fetch&amp;load" class="page">fetch&amp;load</a></li>
+<li><strong class="activepage">STOR e LOAD</strong></li>
+</ul>
+<li><a href="../Pipe.html" title="Pipe" class="page">Pipe</a></li>
+<li><a href="../test.html" title="test" class="page">test</a></li>
+</ul>
+<li><a href="../../strumenti.html" title="strumenti" class="page">strumenti</a></li>
+<li><a href="../../LICENSE.html" title="License & Ref" class="page">License & Ref</a></li>
+</ul>
+ </div>
+		<div id="content">
+						<h1>STOR e LOAD</h1>
+
+			<p>
+Nel caso di una <strong>STOR</strong> il PC è stato incrementato automaticamente di 1, il fetch viene inibito e quando la RAM è disponibile, subito effettuato per cominciare la prossima istruzione.<br>
+</p>
+
+<p>
+Purtroppo questa RAM offerta da Logisim non dispone di un bit per segnalare che ha finito il lavoro assegnatole. Per gestire l'evento e risolvere il deadlock che avremmo con una RAM sempre in str, si può partire dalla semplificazione che la risposta della RAM è istantanea sul <em>RisingEdge, </em>per questo si può temporizzare con i trigger del FlipFlop_write.<br>
+Sul <em>RisingEdge</em> la RAM deve essere ancora nello stato str, ma dato che MBR e H vengono scritti sul <em>HighLevel </em>è qui che si può cambiare lo stato della RAM in ld<br>
+</p>
+
+<h3>temporizzazione</h3>
+<p>
+<strong>STOR</strong><br>
+RE: PC+1<br>
+HL: MBR, !IFU<br>
+FE: OpCode<br>
+LL: RAMst, swMAR<br>
+RE: PC+1, <em>scritturaRAM</em><br>
+HL: enFF, FF, wrTOft→MBR, decode, H<br>
+FE: OpCode<br>
+LL: RAMld<br>
+</p>
+
+<p>
+Si è risolto in modo analogo il conflitto generato dallo stato di abilitazione di MBR durante una <strong>LOAD</strong>, non dovendo però in questo caso cambiare lo stato della RAM si è solamente provveduto a condizionare l'abilitazione alla scrittura su MBR<br>
+</p>
+
+
+			<br>
+			<hr class='footnotes'>
+			<span class="backlinks">
+				Backlinks:
+				
+			</span>
+		</div>
+	</div>
+</body>
+</html>
+

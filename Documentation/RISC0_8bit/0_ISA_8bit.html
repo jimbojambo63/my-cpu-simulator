@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title></title>
+	<meta name="generator" content="Zim 0.60">
+	<meta name="viewport" content="width=device-width">
+	<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,greek,latin-ext' rel='stylesheet' type='text/css'> -->
+	<![if !IE]>
+	<!-- comment out for IE since it spams the user with warnings -->
+	<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+	<script type='text/javascript'>
+		$(window).load(function(){$("#navigation").height( $("#content").height()+65 );});
+	</script>
+	<![endif]>
+	<style>
+		body, html {
+			height:100%;
+			font-family:'Open Sans', sans-serif;
+			line-height:1.5em;
+			font-weight:300;
+			background-color:#FAFAFA;
+			text-rendering:geometricPrecision;
+			margin:0;
+			padding:0;
+		}
+		.wrapper {
+			height:100%;
+			position:relative;
+		}
+		#navigation {
+			background-color:#F3F3F3;
+			display:inline-block;
+			border-right:1px solid #EAEAEA;
+			padding-right:65px;
+			padding-top:65px;
+			padding-left:25px;
+			position:relative;
+			float:left;
+			min-height:100%;
+		}
+		#content {
+			float:left;
+			display:inline-block;
+			position:absolute;
+			max-width:960px;
+			padding:65px;
+		}
+		#navigation ul {
+			margin-top:0;
+			margin-bottom:0;
+			padding-left:40px;
+		}
+		#navigation li {
+			list-style-type:none;
+		}
+		#navigation a {
+			text-decoration:none;
+			color:gray;
+		}
+		#navigation strong {
+			color:#4E9A06;
+			font-weight:400;
+		}
+		#navigation a:hover {
+			text-decoration:underline;
+		}
+		#content h1:nth-child(1) {
+			margin-top:0;
+		}
+		h1,h2,h3,h4,h5,h6 {
+			color:#4E9A06;
+			font-weight:300;
+		}
+		#content a {
+			color:#CE5C00;
+		}
+		#content a {
+			text-decoration: none;
+		}
+		#content a:hover {
+			text-decoration: underline;
+		}
+		#content a:active {
+			text-decoration: underline;
+		}
+		#content strike {
+			color: grey;
+		}
+		#content u {
+			text-decoration: none;
+			background-color: yellow;
+		}
+		#content tt {
+			color: #2e3436;
+		}
+		#content pre {
+			color: #2e3436;
+			margin-left: 20px;
+		}
+		.backlinks {
+			color:gray;
+		}
+		hr.footnotes {
+			width: 20%;
+			margin-left: 0;
+		}
+		@media print{
+			#navigation{
+				background-color:#FFF;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div id="navigation"> <ul>
+<li><a href="../RISC0_8bit.html" title="RISC0 8bit" class="page">RISC0 8bit</a></li>
+<ul>
+<li><strong class="activepage">0 ISA 8bit</strong></li>
+<ul>
+<li><a href="./0_ISA_8bit/fetch%26load.html" title="fetch&amp;load" class="page">fetch&amp;load</a></li>
+<li><a href="./0_ISA_8bit/STOR_e_LOAD.html" title="STOR e LOAD" class="page">STOR e LOAD</a></li>
+</ul>
+<li><a href="./Pipe.html" title="Pipe" class="page">Pipe</a></li>
+<li><a href="./test.html" title="test" class="page">test</a></li>
+</ul>
+<li><a href="../strumenti.html" title="strumenti" class="page">strumenti</a></li>
+<li><a href="../LICENSE.html" title="License & Ref" class="page">License & Ref</a></li>
+</ul>
+ </div>
+		<div id="content">
+						<h1>0 ISA 12bit</h1>
+
+			<p>
+Operazioni della ALU in ordine di codifica (A = 000, A OR B = 111)<br>
+[A; B; !B; B+1; A+B; A-B; A AND B; A OR B]<br>
+</p>
+
+<p>
+4bit di codice operativo + 8bit di dati<br>
+</p>
+
+<h3>istruzioni della ALU</h3>
+<p>
+<strong>op.Code	istr.</strong><br>
+0000	<strong>INC</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>&lt;register&gt;+1 →	D</em><br>
+<div style='padding-left: 90pt'>
+Za: 1 JZ: 0 ALU: 011 SH: 00 A: 000 C:100000 M: 000<br>
+0100 1100 0001 0000 0000 ⇒ 4c100<br>
+</div>
+</p>
+			
+<p>
+0001	<strong>NOT</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>!&lt;register&gt; → D</em><br>
+<div style='padding-left: 90pt'>
+Za: 1 JZ: 0 ALU: 010 SH: 00 A: 000 C:100000 M: 000<br>
+0100 1000 0001 0000 0000 ⇒ 48100<br>
+</div>
+</p>
+
+<p>
+0010	<strong>ADD</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>D+&lt;register&gt; → D</em><br>
+<div style='padding-left: 90pt'>
+Za: 1 JZ: 0 ALU: 100 SH: 00 A: 100 C:100000 M:000<br>
+0101 0000 1001 0000 0000 ⇒ 50900<br>
+</div>
+</p>
+
+<p>
+0011	<strong>SUB</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>D - &lt;register&gt; → D</em><br>
+<div style='padding-left: 90pt'>
+Za: 1 JZ: 0 ALU: 101 SH: 00 A: 100 C:100000 M:000<br>
+0101 0100 1001 0000 0000 ⇒ 54900<br>
+</div>
+</p>
+
+<p>
+0100	<strong>AND</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>D AND &lt;register&gt; → D</em><br>
+<div style='padding-left: 90pt'>
+Za: 1 JZ: 0 ALU: 110 SH: 00 A: 100 C:100000 M:000<br>
+0101 1000 1001 0000 0000 ⇒ 58900<br>
+</div>
+</p>
+			
+<p>
+0101	<strong>OR</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>D OR &lt;register&gt; → D</em><br>
+<div style='padding-left: 90pt'>
+Za: 1 JZ: 0 ALU: 111 SH: 00 A: 100 C:100000 M:000<br>
+0101 1100 1001 0000 0000 ⇒ 5c900<br>
+</div>
+</p>
+
+<p>
+0110	<strong>DEST</strong>&nbsp;&nbsp;&nbsp;&nbsp;costante&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr: <em>costante → Dest</em><br>
+<div style='padding-left: 90pt'>
+Za: 1 JZ: 0 ALU: 000 SH: 00 A: 011 C:100000 M:000<br>
+0100 0000 0111 0000 0000 ⇒ 40700<br>
+</div>
+</p>
+
+<p>
+0111	<strong>MOVD</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>&lt;register&gt;(B) → D</em><br>
+<div style='padding-left: 90pt'>
+Za: 1 JZ: 0 ALU: 001 SH: 00 A: 000 C:100000 M:000<br>
+</div>
+<div style='padding-left: 60pt'>
+0100 0100 0001 0000 0000 ⇒ 44100<br>
+</div>
+</p>
+
+
+<h3>shift</h3>
+<p>
+1000	<strong>SHR</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>&lt;register&gt; / 2 → D</em><br>
+<div style='padding-left: 90pt'>
+Za: 1 JZ: 0 ALU: 001 SH: 11 A:000 C:100000 M:000<br>
+</div>
+<div style='padding-left: 60pt'>
+0100 0111 0001 0000 0000 ⇒ 47100<br>
+</div>
+</p>
+	
+<p>
+1001	<strong>SHL</strong>&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>&lt;register&gt; * 2 → D</em><br>
+<div style='padding-left: 90pt'>
+Za: 1 JZ: 0 ALU:001 SH: 01 A:000 C:100000 M:000<br>
+0100 0101 0001 0000 0000 ⇒ 45100<br>
+</div>
+</p>
+
+
+<h3>registrazione</h3>
+<p>
+1011	<strong>MOV</strong>&nbsp;&nbsp;&nbsp;&nbsp;register(Δ),register(B)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>dest ← source</em><br>
+<div style='padding-left: 90pt'>
+Za: 0 JZ: 0 ALU:001 SH: 00 A:000  B:     C:000000 M:000<br>
+0000 0100 0000 0000 0000 ⇒ 04000<br>
+<em>mappa sorgente </em>(B)<em>: 			000=MDR; 001=PC; 010=GENERAL; 011=H; 100=D</em><br>
+<em>mappa destinazione </em>(Δ)<em>:		000=MAR; 001=MDR; 010=PC; 011=GENERAL; 100=H</em><br>
+</div>
+</p>
+
+
+<h3>misc</h3>
+<p>
+1010	<strong>NOP</strong>&nbsp;&nbsp;&nbsp;&nbsp;register	(B) <br>
+<div style='padding-left: 90pt'>
+Za: 0 JZ: 0 ALU:	SH: 00 A:<br>
+</div>
+</p>
+
+
+<h3>memory</h3>
+<p>
+1100	<strong>STOR</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>MAR ↑ MDR </em><br>
+<div style='padding-left: 90pt'>
+Za: 0 JZ:  0 ALU: 000 SH: 00 A: 000 B:     C: 000000 M: 010<br>
+0000 0000 0000 0000 0010 ⇒ 00002<br>
+</div>
+</p>
+
+<p>
+<div style='padding-left: 90pt'>
+Deve essere anticipata da una <strong>MOV 00000BBB </strong>(MOV MAR SOURCE) ha lo scopo di abilitare la scrittura in RAM e scrivere<br>
+</div>
+</p>
+
+<p>
+1101	<strong>LOAD</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>MAR ↓ MDR</em><br>
+<div style='padding-left: 90pt'>
+Za: 0 JZ: 0 ALU: 000 SH: 00 A: 000 B:     C: 000000 M: 100<br>
+0000 0000 0000 0000 0100 ⇒ 0004<br>
+</div>
+</p>
+
+<p>
+<div style='padding-left: 90pt'>
+Deve essere anticipata da una <strong>MOV 00000BBB </strong>ha lo scopo di abilitare la lettura dalla RAM e scrivere in MDR <br>
+</div>
+</p>
+
+
+<h3>condizionali</h3>
+<p>
+1111	<strong>JMP</strong>&nbsp;&nbsp;&nbsp;&nbsp;displacement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;descr:	<em>PC + H → PC</em><br>
+<div style='padding-left: 90pt'>
+Za: 0 JZ: 0 ALU: 100 SH: 00 A: 001 B:   C: 000100 M: 000<br>
+0001 0000 0010 0010 0000 ⇒ 10220<br>
+</div>
+</p>
+			
+<p>
+<div style='padding-left: 90pt'>
+Lo spiazzamento deve essere esplicito<br>
+</div>
+</p>
+			
+<p>
+1110	<strong>JZ</strong>&nbsp;&nbsp;&nbsp;&nbsp;displacement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	descr:	<em>PC + H → PC</em><br>
+<div style='padding-left: 90pt'>
+Za: 0 JZ: 1 ALU: 100 SH: 00 A: 001 B:    C: 000100 M: 000<br>
+0011 0000 0010 0010 0000 ⇒ 30220<br>
+</div>
+</p>
+			
+<p>
+<div style='padding-left: 90pt'>
+Lo spiazzamento deve essere esplicito<br>
+</div>
+</p>
+
+
+
+			<br>
+			<hr class='footnotes'>
+			<span class="backlinks">
+				Backlinks:
+				
+			</span>
+		</div>
+	</div>
+</body>
+</html>
+

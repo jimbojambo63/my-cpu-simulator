@@ -135,16 +135,16 @@
 						<h1>fetch&load</h1>
 
 			<p>
-Questo processore scrive immediatamente al fetch i dati di ogni istruzione all'interno del registro H, a poco è utile però dato che la prossima istruzione sovrascriverebbe queste informazioni anche fosse un tentativo di salvarle su qualche altro registro.<br>
+Questo processore scrive immediatamente in fase di fetch i dati di ogni istruzione all'interno del registro H, ma è poco utilizzabile poiché qualsiasi prossima istruzione sovrascriverebbe queste informazioni anche fosse un tentativo di salvarle su qualche altro registro.<br>
 </p>
 
 <p>
 Per salvare quindi le informazioni dalla sovrascrittura è stato aggiunto un registro che è destinazione di quasi tutte le operazioni della ALU. Poiché ciò non è bastato, si è dovuta aggiungere l'istruzione <strong>DEST</strong> all'ISA per permettere il caricamento diretto dalla RAM, anche se assomiglia molto al <strong>LOAD</strong>, non c'è alcun tipo di indirizzamento.<br>
-Questa istruzione dall'infelice nome <strong>DEST</strong>, registra una costante specificata negli 8bit meno significativi, nel registro Dest, potrebbe più efficacemente chiamarsi CONST..<br>
+Questa istruzione dall'infelice nome <strong>DEST</strong>, registra una costante specificata negli 8bit meno significativi, nel registro Dest, potrebbe forse più efficacemente chiamarsi CONST di constant.<br>
 </p>
 
 <p>
-Purtroppo però nello spazio di indirizzamento di una <strong>MOV</strong> non è stato ben specificato il registro Dest tra i destinatari, anche se probabilmente all'indirizzo 0101 dovrebbe proprio essere lui, la grande disponibilità di bit del codice operativo ha quindi ospitato una <strong>MOVD</strong> dedicata per la movimentazione di dati da un registro al registro Dest<br>
+Purtroppo nello spazio di indirizzamento di una <strong>MOV</strong> non è stato ben specificato il registro Dest tra i destinatari, anche se probabilmente all'indirizzo 0101 dovrebbe proprio essere lui, la grande disponibilità di bit del codice operativo ha quindi ospitato una <strong>MOVD</strong> dedicata per la movimentazione di dati da un registro al registro Dest<br>
 </p>
 
 

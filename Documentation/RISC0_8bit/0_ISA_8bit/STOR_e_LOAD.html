@@ -139,8 +139,8 @@ Nel caso di una <strong>STOR</strong> il PC è stato incrementato automaticament
 </p>
 
 <p>
-Purtroppo questa RAM offerta da Logisim non dispone di un bit per segnalare che ha finito il lavoro assegnatole. Per gestire l'evento e risolvere il deadlock che avremmo con una RAM sempre in str, si può partire dalla semplificazione che la risposta della RAM è istantanea sul <em>RisingEdge, </em>per questo si può temporizzare con i trigger del FlipFlop_write.<br>
-Sul <em>RisingEdge</em> la RAM deve essere ancora nello stato str, ma dato che MBR e H vengono scritti sul <em>HighLevel </em>è qui che si può cambiare lo stato della RAM in ld<br>
+Purtroppo questa RAM offerta da Logisim non dispone di un bit per segnalare che ha finito il lavoro assegnatole. Per gestire l'evento e risolvere il deadlock che avremmo con una RAM sempre in str (storage), si può partire dalla semplificazione, valida a basse frequenze, di considerare la risposta della RAM istantanea sul <em>RisingEdge, </em>per questo si può temporizzare con i trigger del FlipFlop_write.<br>
+Sul <em>RisingEdge</em> la RAM deve essere ancora nello stato str, ma dato che MBR e H vengono scritti sul <em>HighLevel </em>è qui che si può cambiare lo stato della RAM in ld (load).<br>
 </p>
 
 <h3>temporizzazione</h3>

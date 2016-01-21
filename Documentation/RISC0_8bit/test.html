@@ -113,6 +113,41 @@
 			}
 		}
 	</style>
+<script type="text/javascript">
+var $check = $("input[type=checkbox]"),
+  el;
+
+$check
+  .data('checked', 0)
+  .click(function(e) {
+
+    el = $(this);
+
+    switch (el.data('checked')) {
+
+      // unchecked, going indeterminate
+      case 0:
+        el.data('checked', 1);
+        el.prop('indeterminate', true);
+        break;
+
+        // indeterminate, going checked
+      case 1:
+        el.data('checked', 2);
+        el.prop('indeterminate', false);
+        el.prop('checked', true);
+        break;
+
+        // checked, going unchecked
+      default:
+        el.data('checked', 0);
+        el.prop('indeterminate', false);
+        el.prop('checked', false);
+
+    }
+
+  });
+</script>
 </head>
 <body>
 	<div class="wrapper">
@@ -132,24 +167,26 @@
 
 			<p>
 <ul>
-<li style="list-style-image: url(../_resources/checked-box.png)"><strong>INC</strong></li>
-<li style="list-style-image: url(../_resources/unchecked-box.png)"><strong>NOT</strong></li>
-<li style="list-style-image: url(../_resources/checked-box.png)"><strong>ADD</strong></li>
-<li style="list-style-image: url(../_resources/checked-box.png)"><strong>SUB</strong></li>
-<li style="list-style-image: url(../_resources/unchecked-box.png)"><strong>AND</strong></li>
-<li style="list-style-image: url(../_resources/unchecked-box.png)"><strong>OR</strong></li>
-<li style="list-style-image: url(../_resources/checked-box.png)"><strong>DEST</strong></li>
-<li style="list-style-image: url(../_resources/checked-box.png)"><strong>MOVD</strong></li>
-<li style="list-style-image: url(../_resources/unchecked-box.png)"><strong>SHR</strong></li>
-<li style="list-style-image: url(../_resources/unchecked-box.png)"><strong>SHL</strong></li>
-<li style="list-style-image: url(../_resources/checked-box.png)"><strong>MOV</strong></li>
-<li style="list-style-image: url(../_resources/checked-box.png)"><strong>STOR</strong></li>
-<li style="list-style-image: url(../_resources/checked-box.png)"><strong>LOAD</strong></li>
-<li style="list-style-image: url(../_resources/checked-box.png)"><strong>JMP</strong></li>
-<li style="list-style-image: url(../_resources/checked-box.png)"><strong>JZ</strong></li>
+<li> <input type="checkbox" name="checkbox" value="" id="INC"><label for="INC">INC</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="ADD"><label for="ADD">ADD</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="SUB"><label for="SUB">SUB</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="AND"><label for="AND">AND</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="OR"><label for="OR">OR</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="DEST"><label for="DEST">DEST</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="MOVD"><label for="MOVD">MOVD</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="SHR"><label for="SHR">SHR</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="SHL"><label for="SHL">SHL</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="MOV"><label for="MOV">MOV</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="STOR"><label for="STOR">STOR</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="LOAD"><label for="LOAD">LOAD</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="JMP"><label for="JMP">JMP</label></li>
+<li> <input type="checkbox" name="checkbox" value="" id="JZ"><label for="JZ">JZ</label></li>
 </ul>
+</p><br><br>
+<p>
+Il codice binario di questi test è scritto a sinistra di ogni istruzione in esadecimale (4 bit per cifra) e sono salvati nella cartella RAM.<br>
+Sono caricabili direttamente da Logisim con il tasto destro sulla RAM cliccando su "load image".
 </p>
-
 
 <h4>testSTOR_LOAD_LOOP</h4>
 
@@ -171,6 +208,7 @@ b24	MOV	PC, DEST<br>
 </p>
 
 
+
 <h4>testJMP_MOV</h4>
 
 <p>
@@ -181,7 +219,7 @@ b12	MOV	MDR, GENERAL<br>
 
 <h4>testJZ_moltiplicazione(N*C)</h4>
 <p>
-scritti gli operandi nelle celle 1f e 20
+Per eseguire questo test sono stati scritti gli operandi della moltiplicazione nelle celle 1f e 20
 </p>
 <p> 
 000		000<br>

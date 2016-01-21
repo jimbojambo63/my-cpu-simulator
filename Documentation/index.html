@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title></title>
+	<meta name="generator" content="Zim 0.60">
+	<meta name="viewport" content="width=device-width">
+	<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,greek,latin-ext' rel='stylesheet' type='text/css'> -->
+	<![if !IE]>
+	<!-- comment out for IE since it spams the user with warnings -->
+	<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+	<script type='text/javascript'>
+		$(window).load(function(){$("#navigation").height( $("#content").height()+65 );});
+	</script>
+	<![endif]>
+	<style>
+		body, html {
+			height:100%;
+			font-family:'Open Sans', sans-serif;
+			line-height:1.5em;
+			font-weight:300;
+			background-color:#FAFAFA;
+			text-rendering:geometricPrecision;
+			margin:0;
+			padding:0;
+		}
+		.wrapper {
+			height:100%;
+			position:relative;
+		}
+		#navigation {
+			background-color:#F3F3F3;
+			display:inline-block;
+			border-right:1px solid #EAEAEA;
+			padding-right:65px;
+			padding-top:65px;
+			padding-left:25px;
+			position:relative;
+			float:left;
+			min-height:100%;
+		}
+		#content {
+			float:left;
+			display:inline-block;
+			position:absolute;
+			max-width:960px;
+			padding:65px;
+		}
+		#navigation ul {
+			margin-top:0;
+			margin-bottom:0;
+			padding-left:40px;
+		}
+		#navigation li {
+			list-style-type:none;
+		}
+		#navigation a {
+			text-decoration:none;
+			color:gray;
+		}
+		#navigation strong {
+			color:#4E9A06;
+			font-weight:400;
+		}
+		#navigation a:hover {
+			text-decoration:underline;
+		}
+		#content h1:nth-child(1) {
+			margin-top:0;
+		}
+		h1,h2,h3,h4,h5,h6 {
+			color:#4E9A06;
+			font-weight:300;
+		}
+		#content a {
+			color:#CE5C00;
+		}
+		#content a {
+			text-decoration: none;
+		}
+		#content a:hover {
+			text-decoration: underline;
+		}
+		#content a:active {
+			text-decoration: underline;
+		}
+		#content strike {
+			color: grey;
+		}
+		#content u {
+			text-decoration: none;
+			background-color: yellow;
+		}
+		#content tt {
+			color: #2e3436;
+		}
+		#content pre {
+			color: #2e3436;
+			margin-left: 20px;
+		}
+		.backlinks {
+			color:gray;
+		}
+		hr.footnotes {
+			width: 20%;
+			margin-left: 0;
+		}
+		@media print{
+			#navigation{
+				background-color:#FFF;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div id="navigation"> <ul>
+<li><strong class="activepage">RISC0 8bit</strong></li>
+<ul>
+<li><a href="./RISC0_8bit/0_ISA_8bit.html" title="0 ISA 8bit" class="page">0 ISA 8bit</a></li>
+<li><a href="./RISC0_8bit/Pipe.html" title="Pipe" class="page">Pipe</a></li>
+<li><a href="./RISC0_8bit/test.html" title="test" class="page">test</a></li>
+</ul>
+<li><a href="./strumenti.html" title="strumenti" class="page">strumenti</a></li>
+<li><a href="./LICENSE.html" title="License & Ref" class="page">License & Ref</a></li>
+</ul>
+ </div>
+		<div id="content">
+						<h1>RISC0 8bit</h1>
+
+			<h4>funzionamento generale:</h4><br>
+il PC esegue l'indirizzamento dell'istruzione in RAM, il cui risultato della lettura viene scritto in MBR.<br>
+<br>
+Il registro <u>H</u> viene caricato automaticamente alla decodifica dell'istruzione con gli 8 bit meno significativi del registro MBR<br>
+<br>
+Per le scritture e letture di dati dalla RAM vengono usati il registro <u>MAR</u> che indirizza in RAM una locazione che viene scritta o letta dal registro <u>MDR</u>. <br>
+<br>
+È stata utilizzata una ROM come decodificatore delle istruzioni del calcolatore indirizzate dai 4 bit più significativi del registro <u>MBR</u>.<br>
+Le linee di controllo sono attualmente 17.<br>
+<br>
+La ALU gestisce correttamente numeri interi naturali compresi tra 0 e 511 poiché l'implementazione dello shift verso destra non replica il segno del bit più significativo.<br>
+<br>
+Data la natura poco progettuale del sistema, l'ISA è piuttosto legnoso e a volte ridondante, sicuramente si può aggiustare l'ordine delle istruzioni, e sostituirne alcune con altre più utili.<br>
+<br>
+per esempio la prima istruzione è <strong>INC</strong>, questo può produrre il risultato 1 nel registro DEST dopo il primo <em>RisingEdge </em>della CPU, poiché la ROM ha i segnali abilitati per eseguire questa istruzione.<br>
+<br>
+<strong>Formato delle linee di controllo: </strong><em>(dal bit più significativo a scendere)</em><br>
+Za 1bit: abilitazione registro di stato ALU=0<br>
+JMZ 1bit: identificatore istruzione di salto condizionato al flag Z della ALU<br>
+ALU 3bit: ALU a 8 operazioni codificate in ordine crescente [A; B; !B; B+1; A+B; A-B; A AND B; A OR B]<br>
+SH 2bit: Shifter con abilitazione e scelta direzione, se non abilitato è un cortocircuito<br>
+A 3bit: 5 registri abilitabili alla scrittura sul bus A decodificati in ordine crescente [MDR; PC; GENERAL; H; DEST]<br>
+C 6bit: 6 registri abilitabili contemporaneamente per la memorizzazione del risultato ALU<br>
+M 3bit: bit 0: inutilizzato; bit 1: Storage, abilitazione ftMAR; bit 2: Load, abilitazione ftMAR, abilitazione MDR;<br>
+<br>
+<h4>mappatura e indirizzamento registri</h4><br>
+È previsto una ISA di 12 bit composta da un codice operativo di 4 a cui sono aggiunti 8 bit meno significativi per i dati e i riferimenti a registro.<br>
+Tutte le istruzioni hanno destinazione il registro <u>D</u> e sorgente indirizzata dai 3 bit meno significativi dell'istruzione, unico caso di movimentazione tra registri indirizzati è l'istruzione <strong>MOV</strong> [1011].<br>
+Considerando B l'indirizzo del registro sorgente e Δ della destinazione gli 8 bit disponibili vengono utilizzati nel seguente modo:	0ΔΔΔ0BBB <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<div style='padding-left: 90pt'>
+<em>mappa sorgente </em>(B)<em>: 			000=MDR; 001=PC; 010=GENERAL; 011=H; 100=D</em><br>
+<em>mappa destinazione </em>(Δ)<em>:		000=MAR; 001=MDR; 010=PC; 011=GENERAL; 100=H</em><br>
+</div>
+
+<br><br>
+<a href="./LICENSE.html" title="LICENSE.html" class="file">LICENSE.html</a>
+
+
+			<br>
+			<hr class='footnotes'>
+			<span class="backlinks">
+				Backlinks:
+				
+			</span>
+		</div>
+	</div>
+</body>
+</html>
+
